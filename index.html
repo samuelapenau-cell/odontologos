@@ -285,10 +285,11 @@ button{cursor:pointer;font-family:inherit}
    RESPONSIVE
    ======================== */
 @media(max-width:1024px){
-  .hero .container{grid-template-columns:1fr;gap:40px}
+  .hero .container{grid-template-columns:1fr;gap:32px}
   .hero-content{padding:20px 0;text-align:center;display:flex;flex-direction:column;align-items:center}
   .hero p{margin-left:auto;margin-right:auto}
   .hero-image-wrap{aspect-ratio:16/10;max-width:600px;margin:0 auto;width:100%}
+  .hero-cta-wrap{justify-content:center}
   .experience .container{grid-template-columns:1fr;gap:40px}
   .experience-content{padding:0}
   .experience-accent{right:10px;bottom:-10px;width:120px;height:120px}
@@ -300,28 +301,79 @@ button{cursor:pointer;font-family:inherit}
   .nav-links a{display:none}
   .nav .nav-cta{display:none}
   .hamburger{display:flex}
-  .philosophy-grid{grid-template-columns:1fr;gap:20px}
-  .services-grid{grid-template-columns:1fr;gap:20px}
-  .testimonials-grid{grid-template-columns:1fr;gap:20px}
-  .footer .container{grid-template-columns:1fr;gap:28px}
+  .philosophy-grid{grid-template-columns:1fr;gap:16px}
+  .services-grid{grid-template-columns:1fr;gap:16px}
+  .testimonials-grid{grid-template-columns:1fr;gap:16px}
+  .footer .container{grid-template-columns:1fr;gap:24px}
   .footer-bottom{flex-direction:column;text-align:center}
   .hero h1{font-size:clamp(2rem,8.5vw,2.8rem)}
+  .hero-image-wrap{aspect-ratio:4/3}
   .hero-badge{display:none}
   .experience-accent{width:100px;height:100px;font-size:0.7rem;padding:14px;right:6px;bottom:-6px}
   .experience-accent strong{font-size:0.9rem}
   .section-details-inner{padding:1.5rem}
-  .details-grid{grid-template-columns:1fr;gap:20px}
+  .details-grid{grid-template-columns:1fr;gap:16px}
   .details-close{top:12px;right:12px}
+  .expand-trigger{font-size:0.78rem;padding:7px 16px}
+  .service-card-image{aspect-ratio:16/9}
+  .hero-eyebrow{font-size:0.68rem;padding:5px 14px}
+  .section{padding:clamp(2.5rem,6vw,4rem) 0}
+}
+
+@media(max-width:640px){
+  .container{padding:0 20px}
+  .section{padding:clamp(2rem,5vw,3rem) 0}
+  .hero{padding-top:64px;min-height:auto}
+  .hero-content{padding:10px 0}
+  .hero h1{font-size:clamp(1.7rem,7vw,2.2rem)}
+  .hero p{font-size:0.92rem;margin-top:0.75rem}
+  .hero-cta-wrap{margin-top:1.25rem;flex-direction:column;gap:12px;width:100%}
+  .hero-cta-wrap .btn-primary{width:100%;justify-content:center}
+  .hero-image-wrap{border-radius:var(--radius-md);aspect-ratio:4/3}
+  .section-headline{font-size:clamp(1.4rem,5vw,1.75rem)}
+  .section-sub{font-size:0.88rem;margin-top:0.5rem}
+  .phil-card{padding:28px 20px}
+  .phil-card h3{font-size:1.15rem}
+  .service-card-body{padding:18px 20px 22px}
+  .service-card h3{font-size:1.1rem}
+  .service-card p{font-size:0.84rem}
+  .service-card-link{font-size:0.78rem}
+  .testimonial-card{padding:28px 24px}
+  .testimonial-text{font-size:0.88rem}
+  .cta-section .section-headline{font-size:clamp(1.5rem,5.5vw,2rem)}
+  .cta-section .btn-primary{width:100%;justify-content:center;margin-top:1.5rem}
+  .experience-accent{display:none}
+  .section-header-exp{flex-direction:column;align-items:flex-start;gap:12px}
+  .nav-logo{font-size:1.1rem}
+  .nav-back span{display:none}
 }
 
 @media(max-width:480px){
-  .container{padding:0 18px}
-  .hero{padding-top:60px}
-  .btn-primary{padding:14px 28px;font-size:0.85rem}
-  .nav{padding:10px 20px}
-  .testimonial-card{padding:28px 22px}
-  .phil-card{padding:30px 20px}
+  .container{padding:0 16px}
+  .hero{padding-top:56px}
+  .hero-eyebrow{font-size:0.62rem;padding:4px 12px;margin-bottom:0.75rem}
+  .hero h1{font-size:clamp(1.5rem,7.5vw,1.85rem)}
+  .hero p{font-size:0.85rem;line-height:1.6}
+  .btn-primary{padding:14px 24px;font-size:0.82rem}
+  .btn-primary .icon-circle{width:24px;height:24px}
+  .btn-primary .icon-circle svg{width:12px;height:12px}
+  .nav{padding:10px 16px}
+  .nav-logo{font-size:1rem}
+  .testimonial-card{padding:24px 18px}
+  .phil-card{padding:24px 18px}
+  .service-card-body{padding:16px 18px 20px}
   .section-details-inner{padding:1.25rem}
+  .details-close{top:10px;right:10px;font-size:1.2rem}
+  .section-headline{font-size:clamp(1.25rem,5.5vw,1.5rem)}
+  .section-sub{font-size:0.84rem}
+  .phil-card h3{font-size:1.05rem}
+  .phil-icon{width:52px;height:52px}
+  .phil-icon svg{width:22px;height:22px}
+  .footer .container{gap:20px}
+  .footer h4{font-size:0.9rem}
+  .footer ul a{font-size:0.8rem}
+  .footer-contact li{font-size:0.8rem}
+  .form-row{grid-template-columns:1fr}
 }
 
 @media(prefers-reduced-motion:reduce){
