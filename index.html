@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Experience premium dental care redefined. Boutique aesthetics, advanced technology, and delicate painless treatment in an ultra-luxurious environment.">
+<title>Lumina — Boutique Dental Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:'Outfit',sans-serif;background-color:#FDFBF7;color:#2D2A28;line-height:1.6;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{cursor:pointer;font-family:inherit}
+::selection{background:#2D2A28;color:#FDFBF7}
+
+:root{
+  --ivory:#FDFBF7;
+  --white:#FFFFFF;
+  --champagne:#F8F4F0;
+  --sand:#F0EBE5;
+  --warm-border:#E8E2DC;
+  --charcoal:#2D2A28;
+  --bronze:#8B7D6B;
+  --bronze-light:#A3947F;
+  --bronze-glow:#C4A97D;
+  --bronze-hover:#6B5F4F;
+  --text-muted:#8A8580;
+  --text-body:#4A4642;
+
+  --font-serif:'Playfair Display',Georgia,serif;
+  --font-sans:'Outfit',system-ui,sans-serif;
+
+  --radius-sm:8px;
+  --radius-md:16px;
+  --radius-lg:24px;
+  --radius-xl:32px;
+  --radius-pill:9999px;
+
+  --ease-out:cubic-bezier(0.23,1,0.32,1);
+  --ease-in-out:cubic-bezier(0.77,0,0.175,1);
+  --ease-spring:cubic-bezier(0.32,0.72,0,1);
+
+  --shadow-card:0 2px 20px rgba(45,42,40,0.04),0 8px 32px rgba(45,42,40,0.03);
+  --shadow-card-hover:0 8px 40px rgba(45,42,40,0.07),0 24px 60px rgba(45,42,40,0.05);
+  --shadow-button:0 4px 16px rgba(45,42,40,0.10);
+  --shadow-button-hover:0 8px 28px rgba(45,42,40,0.14);
+
+  --section-py:clamp(4rem,8vw,7rem);
+
+  --gradient-warm:linear-gradient(135deg,#FDFBF7,#F8F4F0);
+  --gradient-gold:linear-gradient(135deg,#8B7D6B,#A3947F,#C4A97D);
+  --gradient-subtle:linear-gradient(180deg,transparent,rgba(139,125,107,0.04));
+  --gradient-card:linear-gradient(135deg,rgba(139,125,107,0.02),transparent 60%);
+}
+
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.container--narrow{max-width:960px}
+.section{padding:var(--section-py) 0;position:relative}
+.section-headline{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.75rem,4vw,3rem);line-height:1.2;letter-spacing:-0.01em;color:var(--charcoal)}
+.section-sub{font-size:clamp(0.95rem,1.2vw,1.1rem);color:var(--text-body);max-width:56ch;margin-top:1rem;line-height:1.7;font-weight:300}
+
+/* ---- GRADIENT TEXT ---- */
+.gradient-text{background:var(--gradient-gold);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+
+/* ---- REVEAL ---- */
+.fade-up{opacity:0;transform:translateY(36px);transition:opacity 0.9s var(--ease-out),transform 0.9s var(--ease-out)}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.stagger-delay-1{transition-delay:0.12s}
+.stagger-delay-2{transition-delay:0.22s}
+.stagger-delay-3{transition-delay:0.32s}
+.stagger-delay-4{transition-delay:0.42s}
+
+/* ---- NOISE ---- */
+.noise-overlay{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:0.018;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:180px}
+
+/* ========================
+   NAVIGATION
+   ======================== */
+.nav-wrap{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 24px 0;display:flex;justify-content:center}
+.nav{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1100px;padding:12px 28px;border-radius:var(--radius-pill);background:rgba(253,251,247,0.80);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(232,226,220,0.5);transition:box-shadow 0.5s var(--ease-out),border-color 0.5s var(--ease-out)}
+.nav.scrolled{box-shadow:0 2px 24px rgba(45,42,40,0.05);border-color:rgba(232,226,220,0.7)}
+.nav-logo{font-family:var(--font-serif);font-size:1.35rem;font-weight:600;letter-spacing:-0.02em;background:var(--gradient-gold);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.nav-logo span{-webkit-text-fill-color:var(--bronze);color:var(--bronze)}
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-links li{position:relative}
+.nav-links a{font-size:0.85rem;font-weight:500;color:var(--bronze);letter-spacing:0.03em;transition:all 0.35s var(--ease-out);padding:8px 16px;border-radius:var(--radius-pill);position:relative}
+.nav-links a::after{content:'';position:absolute;inset:6px 12px;border-radius:var(--radius-pill);background:var(--gradient-gold);opacity:0;transform:scaleY(0);transition:all 0.35s var(--ease-out);z-index:-1}
+.nav-links a:hover::after{opacity:0.10;transform:scaleY(1)}
+.nav-links a:hover{color:var(--bronze-hover)}
+.nav-cta{font-size:0.8rem;font-weight:500;padding:10px 24px;border-radius:var(--radius-pill);background:var(--ivory);color:var(--bronze);border:1px solid rgba(139,125,107,0.2);letter-spacing:0.01em;transition:all 0.4s var(--ease-out);white-space:nowrap}
+.nav-cta:hover{background:var(--bronze);border-color:var(--bronze);transform:translateY(-1px);box-shadow:var(--shadow-button);color:var(--ivory)!important}
+.nav-cta:active{transform:scale(0.97)}
+
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;cursor:pointer}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--bronze);border-radius:2px;transition:all 0.3s var(--ease-out);transform-origin:center}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+.hamburger.active span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+
+.mobile-overlay{position:fixed;inset:0;z-index:999;background:rgba(253,251,247,0.96);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;opacity:0;pointer-events:none;transition:opacity 0.5s var(--ease-out)}
+.mobile-overlay.open{opacity:1;pointer-events:all}
+.mobile-overlay a{font-family:var(--font-serif);font-size:1.8rem;color:var(--bronze);transition:color 0.3s var(--ease-out)}
+.mobile-overlay a:hover{color:var(--bronze-glow)}
+.mobile-overlay .nav-cta{font-family:var(--font-sans);font-size:1rem;padding:14px 36px;margin-top:12px;color:var(--ivory)!important}
+
+/* ========================
+   HERO
+   ======================== */
+.hero{min-height:100dvh;display:flex;align-items:center;padding-top:80px;padding-bottom:0;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-30%;right:-20%;width:70%;height:120%;background:radial-gradient(ellipse at center,rgba(139,125,107,0.06) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(180deg,transparent,var(--ivory));pointer-events:none}
+.hero .container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
+.hero-content{padding:40px 0}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:0.72rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--bronze);margin-bottom:1.25rem;padding:6px 16px;border-radius:var(--radius-pill);background:rgba(139,125,107,0.06);border:1px solid rgba(139,125,107,0.10)}
+.hero h1{font-family:var(--font-serif);font-size:clamp(2.4rem,5.2vw,4.2rem);font-weight:500;line-height:1.1;letter-spacing:-0.02em}
+.hero h1 .line{display:block}
+.hero h1 .line:first-child{color:var(--charcoal)}
+.hero h1 .line em{font-style:italic;background:var(--gradient-gold);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.hero p{font-size:clamp(1rem,1.2vw,1.15rem);color:var(--text-body);margin-top:1.5rem;line-height:1.7;max-width:44ch;font-weight:300}
+.hero-cta-wrap{display:flex;align-items:center;gap:20px;margin-top:2.25rem}
+
+.btn-primary{display:inline-flex;align-items:center;gap:12px;padding:16px 36px;border-radius:var(--radius-pill);background:var(--charcoal);color:var(--ivory);font-size:0.9rem;font-weight:500;border:none;letter-spacing:0.01em;transition:all 0.45s var(--ease-out);box-shadow:var(--shadow-button);position:relative;overflow:hidden}
+.btn-primary::before{content:'';position:absolute;inset:0;background:var(--gradient-gold);opacity:0;transition:opacity 0.45s var(--ease-out)}
+.btn-primary:hover::before{opacity:1}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-button-hover)}
+.btn-primary:active{transform:scale(0.97)}
+.btn-primary span,.btn-primary .icon-circle{position:relative;z-index:1}
+.btn-primary .icon-circle{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.12);transition:all 0.4s var(--ease-out);flex-shrink:0}
+.btn-primary:hover .icon-circle{transform:translateX(4px) translateY(-1px);background:rgba(255,255,255,0.18)}
+.btn-primary .icon-circle svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.hero-image-wrap{position:relative;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:3/4;box-shadow:0 4px 40px rgba(45,42,40,0.06);animation:float 6s var(--ease-in-out) infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hero-image-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease-out)}
+.hero-image-wrap:hover img{transform:scale(1.04)}
+.hero-image-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(139,125,107,0.10),transparent 60%);pointer-events:none}
+.hero-badge{position:absolute;bottom:20px;left:20px;background:rgba(253,251,247,0.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:14px 22px;border-radius:var(--radius-md);border:1px solid rgba(232,226,220,0.5);box-shadow:0 4px 20px rgba(45,42,40,0.04)}
+.hero-badge strong{display:block;font-family:var(--font-serif);font-size:1.1rem;font-weight:600;background:var(--gradient-gold);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.hero-badge span{font-size:0.78rem;color:var(--text-muted);display:block;margin-top:2px}
+
+/* ========================
+   PHILOSOPHY
+   ======================== */
+.philosophy{background:var(--champagne);position:relative}
+.philosophy::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--warm-border),transparent)}
+.philosophy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:3.5rem}
+.phil-card{text-align:center;padding:44px 30px;border-radius:var(--radius-lg);background:var(--white);transition:all 0.5s var(--ease-out);border:1px solid var(--warm-border);position:relative;overflow:hidden}
+.phil-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient-gold);opacity:0;transition:opacity 0.5s var(--ease-out)}
+.phil-card:hover::before{opacity:1}
+.phil-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-card-hover)}
+.phil-icon{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--champagne),var(--sand));margin-bottom:1.5rem;transition:all 0.5s var(--ease-out)}
+.phil-card:hover .phil-icon{background:var(--gradient-gold)}
+.phil-card:hover .phil-icon svg{stroke:var(--ivory)}
+.phil-icon svg{width:26px;height:26px;fill:none;stroke:var(--bronze);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:stroke 0.5s var(--ease-out)}
+.phil-card h3{font-family:var(--font-serif);font-size:1.3rem;font-weight:500;color:var(--charcoal);margin-bottom:0.75rem}
+.phil-card p{font-size:0.92rem;color:var(--text-body);line-height:1.7;font-weight:300}
+.phil-card .phil-more{display:inline-flex;align-items:center;gap:6px;margin-top:1.25rem;font-size:0.82rem;font-weight:500;color:var(--bronze);border:none;background:none;padding:6px 0;transition:all 0.3s var(--ease-out)}
+.phil-card .phil-more svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.5;transition:transform 0.3s var(--ease-out)}
+.phil-card .phil-more:hover{color:var(--bronze-glow)}
+.phil-card .phil-more:hover svg{transform:translateX(4px)}
+
+/* ========================
+   EXPANDABLE DETAILS
+   ======================== */
+.section-details{max-height:0;overflow:hidden;transition:max-height 0.7s var(--ease-spring),opacity 0.5s var(--ease-out),margin 0.5s var(--ease-out);opacity:0;margin-top:0}
+.section-details.open{max-height:2000px;opacity:1;margin-top:2rem}
+.section-details-inner{padding:2.5rem;border-radius:var(--radius-lg);background:linear-gradient(135deg,var(--white),var(--champagne));border:1px solid var(--warm-border);position:relative}
+.section-details-inner::before{content:'';position:absolute;top:0;left:2.5rem;right:2.5rem;height:1px;background:linear-gradient(90deg,transparent,var(--warm-border),transparent)}
+.details-close{position:absolute;top:16px;right:20px;background:none;border:none;font-size:1.5rem;color:var(--text-muted);cursor:pointer;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all 0.3s var(--ease-out)}
+.details-close:hover{background:var(--champagne);color:var(--charcoal)}
+.details-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:1.5rem}
+.details-grid h4{font-family:var(--font-serif);font-size:1.1rem;font-weight:500;color:var(--charcoal);margin-bottom:0.5rem;display:flex;align-items:center;gap:8px}
+.details-grid h4 .d-dot{width:6px;height:6px;border-radius:50%;background:var(--gradient-gold);flex-shrink:0}
+.details-grid p{font-size:0.88rem;color:var(--text-body);line-height:1.7;font-weight:300}
+.details-grid li{font-size:0.88rem;color:var(--text-body);line-height:1.7;font-weight:300;padding-left:1.25rem;position:relative}
+.details-grid li::before{content:'—';position:absolute;left:0;color:var(--bronze)}
+
+/* ---- Section header with expand trigger ---- */
+.section-header-exp{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.section-header-exp-left{flex:1}
+.expand-trigger{display:inline-flex;align-items:center;gap:8px;font-size:0.82rem;font-weight:500;color:var(--bronze);background:none;border:1px solid rgba(139,125,107,0.2);padding:8px 20px;border-radius:var(--radius-pill);transition:all 0.35s var(--ease-out);margin-top:1rem;white-space:nowrap}
+.expand-trigger:hover{background:var(--bronze);color:var(--ivory);border-color:var(--bronze)}
+.expand-trigger svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.5;transition:transform 0.35s var(--ease-out)}
+.expand-trigger:hover svg{transform:translateX(3px)}
+.expand-trigger.active{background:var(--champagne);color:var(--bronze);border-color:var(--warm-border)}
+.expand-trigger.active svg{transform:rotate(180deg)}
+
+/* ========================
+   SERVICES
+   ======================== */
+.services .section-header-exp{margin-bottom:3.5rem}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.service-card{position:relative;border-radius:var(--radius-lg);overflow:hidden;background:var(--white);border:1px solid var(--warm-border);transition:all 0.5s var(--ease-out);cursor:pointer}
+.service-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-card-hover)}
+.service-card-image{aspect-ratio:16/12;overflow:hidden;position:relative}
+.service-card-image img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s var(--ease-out)}
+.service-card:hover .service-card-image img{transform:scale(1.06)}
+.service-card-image::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(45,42,40,0.25));pointer-events:none}
+.service-card-body{padding:24px 26px 28px}
+.service-card-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--champagne),var(--sand));margin-bottom:1rem}
+.service-card-icon svg{width:18px;height:18px;fill:none;stroke:var(--bronze);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.service-card h3{font-family:var(--font-serif);font-size:1.2rem;font-weight:500;color:var(--charcoal);margin-bottom:0.5rem}
+.service-card p{font-size:0.88rem;color:var(--text-body);line-height:1.65;font-weight:300}
+.service-card-link{display:inline-flex;align-items:center;gap:8px;margin-top:1rem;font-size:0.82rem;font-weight:500;color:var(--bronze);border:none;background:none;padding:0;transition:all 0.3s var(--ease-out)}
+.service-card-link svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.5;transition:transform 0.3s var(--ease-out)}
+.service-card:hover .service-card-link{color:var(--bronze-glow)}
+.service-card:hover .service-card-link svg{transform:translateX(4px)}
+
+/* ========================
+   EXPERIENCE
+   ======================== */
+.experience{background:var(--gradient-warm);position:relative}
+.experience::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--warm-border),transparent)}
+.experience .container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.experience-image{position:relative;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/5}
+.experience-image img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease-out)}
+.experience-image:hover img{transform:scale(1.04)}
+.experience-image::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(139,125,107,0.08),transparent 50%);pointer-events:none}
+.experience-accent{position:absolute;bottom:-16px;right:-16px;width:150px;height:150px;border-radius:var(--radius-lg);background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--warm-border);display:flex;align-items:center;justify-content:center;padding:20px;text-align:center;font-size:0.78rem;color:var(--text-body);line-height:1.4;font-weight:400;box-shadow:0 8px 28px rgba(45,42,40,0.04)}
+.experience-accent strong{display:block;font-family:var(--font-serif);font-size:1.1rem;font-weight:600;background:var(--gradient-gold);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.experience-accent span{display:block;margin-top:2px}
+.experience-content{padding:20px 0}
+.experience-content .section-headline{margin-bottom:1rem}
+.experience-list{margin-top:1.75rem;display:flex;flex-direction:column;gap:14px}
+.experience-list li{display:flex;align-items:flex-start;gap:12px;font-size:0.92rem;color:var(--text-body);font-weight:300;line-height:1.6}
+.experience-list li svg{width:16px;height:16px;fill:none;stroke:var(--bronze);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-top:4px;flex-shrink:0}
+
+/* ========================
+   TESTIMONIALS
+   ======================== */
+.testimonials .section-header-exp{margin-bottom:3.5rem}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.testimonial-card{padding:36px 32px;border-radius:var(--radius-lg);background:var(--white);border:1px solid var(--warm-border);transition:all 0.5s var(--ease-out);position:relative}
+.testimonial-card::before{content:'\201C';position:absolute;top:16px;right:24px;font-family:var(--font-serif);font-size:4rem;line-height:1;color:rgba(139,125,107,0.08);pointer-events:none}
+.testimonial-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-card-hover)}
+.testimonial-stars{color:var(--bronze-glow);font-size:0.8rem;letter-spacing:3px;margin-bottom:1rem}
+.testimonial-text{font-size:0.92rem;color:var(--text-body);line-height:1.7;font-weight:300;font-style:italic;margin-bottom:1.5rem}
+.testimonial-author{display:flex;align-items:center;gap:14px}
+.testimonial-avatar{width:44px;height:44px;border-radius:50%;overflow:hidden;background:var(--champagne);flex-shrink:0;border:2px solid rgba(139,125,107,0.10)}
+.testimonial-avatar img{width:100%;height:100%;object-fit:cover}
+.testimonial-name{font-size:0.9rem;font-weight:500;color:var(--charcoal)}
+.testimonial-role{font-size:0.78rem;color:var(--text-muted);font-weight:300}
+
+/* ========================
+   CTA
+   ======================== */
+.cta-section{text-align:center;padding:clamp(5rem,10vw,8rem) 0;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--champagne),var(--sand),var(--champagne));z-index:0}
+.cta-section::after{content:'';position:absolute;top:-40%;left:-20%;width:80%;height:120%;background:radial-gradient(ellipse at center,rgba(139,125,107,0.06) 0%,transparent 60%);pointer-events:none}
+.cta-section .container{position:relative;z-index:1}
+.cta-section .section-headline{font-size:clamp(2rem,4.5vw,3.2rem)}
+.cta-section .section-sub{margin-left:auto;margin-right:auto}
+.cta-section .btn-primary{margin-top:2.25rem}
+.cta-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:var(--radius-pill);background:rgba(255,255,255,0.70);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--warm-border);font-size:0.78rem;color:var(--bronze);margin-bottom:1.5rem;font-weight:500}
+.cta-badge svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ========================
+   FOOTER
+   ======================== */
+.footer{background:var(--charcoal);color:var(--ivory);padding:clamp(3rem,5vw,4.5rem) 0 2rem;position:relative}
+.footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(253,251,247,0.08),transparent)}
+.footer .container{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:44px}
+.footer-brand .nav-logo{-webkit-text-fill-color:var(--ivory);color:var(--ivory);font-size:1.25rem;background:none}
+.footer-brand .nav-logo span{-webkit-text-fill-color:var(--bronze-glow);color:var(--bronze-glow)}
+.footer-brand p{font-size:0.85rem;color:rgba(253,251,247,0.45);margin-top:0.75rem;line-height:1.7;max-width:30ch;font-weight:300}
+.footer-socials{display:flex;gap:14px;margin-top:1.25rem}
+.footer-socials a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;border:1px solid rgba(253,251,247,0.10);color:rgba(253,251,247,0.4);transition:all 0.35s var(--ease-out)}
+.footer-socials a:hover{border-color:var(--bronze);color:var(--bronze-glow);background:rgba(139,125,107,0.12)}
+.footer-socials svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.footer h4{font-family:var(--font-serif);font-size:1rem;font-weight:500;margin-bottom:1rem;color:var(--ivory)}
+.footer ul li{margin-bottom:0.6rem}
+.footer ul a{font-size:0.85rem;color:rgba(253,251,247,0.45);transition:color 0.3s var(--ease-out);font-weight:300}
+.footer ul a:hover{color:var(--bronze-glow)}
+.footer-contact li{display:flex;align-items:center;gap:10px;font-size:0.85rem;color:rgba(253,251,247,0.45);font-weight:300}
+.footer-contact li svg{width:15px;height:15px;fill:none;stroke:var(--bronze);stroke-width:1.5;flex-shrink:0}
+.footer-bottom{border-top:1px solid rgba(253,251,247,0.05);margin-top:clamp(2rem,4vw,3rem);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:0.78rem;color:rgba(253,251,247,0.25);font-weight:300}
+
+/* ========================
+   RESPONSIVE
+   ======================== */
+@media(max-width:1024px){
+  .hero .container{grid-template-columns:1fr;gap:40px}
+  .hero-content{padding:20px 0;text-align:center;display:flex;flex-direction:column;align-items:center}
+  .hero p{margin-left:auto;margin-right:auto}
+  .hero-image-wrap{aspect-ratio:16/10;max-width:600px;margin:0 auto;width:100%}
+  .experience .container{grid-template-columns:1fr;gap:40px}
+  .experience-content{padding:0}
+  .experience-accent{right:10px;bottom:-10px;width:120px;height:120px}
+  .footer .container{grid-template-columns:1fr 1fr;gap:32px}
+  .details-grid{grid-template-columns:1fr}
+}
+
+@media(max-width:768px){
+  .nav-links a{display:none}
+  .nav .nav-cta{display:none}
+  .hamburger{display:flex}
+  .philosophy-grid{grid-template-columns:1fr;gap:20px}
+  .services-grid{grid-template-columns:1fr;gap:20px}
+  .testimonials-grid{grid-template-columns:1fr;gap:20px}
+  .footer .container{grid-template-columns:1fr;gap:28px}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .hero h1{font-size:clamp(2rem,8.5vw,2.8rem)}
+  .hero-badge{display:none}
+  .experience-accent{width:100px;height:100px;font-size:0.7rem;padding:14px;right:6px;bottom:-6px}
+  .experience-accent strong{font-size:0.9rem}
+  .section-details-inner{padding:1.5rem}
+  .details-grid{grid-template-columns:1fr;gap:20px}
+  .details-close{top:12px;right:12px}
+}
+
+@media(max-width:480px){
+  .container{padding:0 18px}
+  .hero{padding-top:60px}
+  .btn-primary{padding:14px 28px;font-size:0.85rem}
+  .nav{padding:10px 20px}
+  .testimonial-card{padding:28px 22px}
+  .phil-card{padding:30px 20px}
+  .section-details-inner{padding:1.25rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}
+  .fade-up{opacity:1;transform:none}
+  .hero-image-wrap{animation:none}
+}
+</style>
+</head>
+<body>
+
+<div class="noise-overlay"></div>
+
+<div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-label="Navigation menu">
+  <a href="#" class="mobile-link" onclick="closeMobile()">Home</a>
+  <a href="#" class="mobile-link" onclick="closeMobile(); toggleDetails('philosophy-details')">Philosophy</a>
+  <a href="#" class="mobile-link" onclick="closeMobile(); toggleDetails('services-details')">Services</a>
+  <a href="#experience" class="mobile-link" onclick="closeMobile()">Experience</a>
+  <a href="#" class="mobile-link" onclick="closeMobile(); toggleDetails('testimonials-details')">Stories</a>
+  <a href="agenda.html" class="nav-cta" onclick="closeMobile()">Book an Experience</a>
+</div>
+
+<nav class="nav-wrap" role="navigation" aria-label="Main navigation">
+  <div class="nav">
+    <a href="#hero" class="nav-logo">Lumina<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#" onclick="event.preventDefault(); toggleDetails('philosophy-details')">Philosophy</a></li>
+      <li><a href="#" onclick="event.preventDefault(); toggleDetails('services-details')">Services</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#" onclick="event.preventDefault(); toggleDetails('testimonials-details')">Stories</a></li>
+      <li><a href="agenda.html" class="nav-cta">Book an Experience</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ======== HERO ======== -->
+<section class="hero section" id="hero">
+  <div class="container">
+    <div class="hero-content fade-up visible">
+      <div class="hero-eyebrow">Boutique Dental Studio</div>
+      <h1>
+        <span class="line">Designing Smiles,</span>
+        <span class="line"><em>Elevating Confidence.</em></span>
+      </h1>
+      <p>Where advanced aesthetic dentistry meets a serene, spa-like experience. Rediscover the joy of a truly stress-free visit.</p>
+      <div class="hero-cta-wrap">
+        <a href="agenda.html" class="btn-primary">
+          <span>Book an Experience</span>
+          <span class="icon-circle">
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div class="hero-image-wrap fade-up visible stagger-delay-1">
+      <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80&auto=format&fit=crop" alt="Bright, modern dental studio with natural light" loading="eager">
+      <div class="hero-badge">
+        <strong>10+ Years</strong>
+        <span>Of Crafting Smiles</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== PHILOSOPHY ======== -->
+<section class="section philosophy" id="philosophy">
+  <div class="container">
+    <div class="section-header-exp fade-up">
+      <div class="section-header-exp-left">
+        <div class="hero-eyebrow">Our Ethos</div>
+        <h2 class="section-headline">Where Science Meets Artistry</h2>
+        <p class="section-sub">Three pillars that define every smile we craft, every treatment we deliver.</p>
+      </div>
+      <button class="expand-trigger" onclick="toggleDetails('philosophy-details')" aria-expanded="false">
+        <span>Deepen</span>
+        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+      </button>
+    </div>
+    <div class="philosophy-grid">
+      <div class="phil-card fade-up stagger-delay-1">
+        <div class="phil-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Advanced Aesthetics</h3>
+        <p>Facial-driven smile design that harmonises proportions, contours, and complexion for naturally stunning results.</p>
+        <button class="phil-more" onclick="toggleDetails('philosophy-details')">
+          Learn more <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+      <div class="phil-card fade-up stagger-delay-2">
+        <div class="phil-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3>Delicate & Painless Care</h3>
+        <p>Needle-free anaesthesia, micro-sedation protocols, and ultra-fine instruments for a genuinely comfortable journey.</p>
+        <button class="phil-more" onclick="toggleDetails('philosophy-details')">
+          Learn more <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+      <div class="phil-card fade-up stagger-delay-3">
+        <div class="phil-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+        <h3>State-of-the-Art Technology</h3>
+        <p>Digital scanning, 3D-printed restorations, and AI-assisted diagnostics for precision that sets the standard.</p>
+        <button class="phil-more" onclick="toggleDetails('philosophy-details')">
+          Learn more <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="section-details" id="philosophy-details">
+      <div class="section-details-inner">
+        <button class="details-close" onclick="toggleDetails('philosophy-details')" aria-label="Close">&times;</button>
+        <h3 class="section-headline" style="font-size:clamp(1.3rem,2.5vw,1.7rem);">Our Philosophy in Depth</h3>
+        <p class="section-sub" style="margin-top:0.5rem;font-size:0.92rem;">At Lumina, we believe exceptional dentistry begins with a philosophy that places the human experience at its centre. Every protocol, every material, every gesture is chosen with intention.</p>
+        <div class="details-grid">
+          <div>
+            <h4><span class="d-dot"></span>The Art of Facial Harmony</h4>
+            <p>We do not design teeth in isolation. Every smile is conceived in relation to the face — lip dynamics, gingival contours, symmetry planes, and the way light interacts with surface texture. Our restorative artists use digital smile design software and hand-crafted ceramic layering to achieve a translucency that mirrors natural enamel.</p>
+            <br>
+            <h4><span class="d-dot"></span>Biomimetic Philosophy</h4>
+            <p>Wherever possible, we preserve natural tooth structure using biomimetic restorative techniques. This means bonding materials that mimic the mechanical and optical properties of natural dentition, reducing the need for aggressive preparation and extending the longevity of every restoration.</p>
+          </div>
+          <div>
+            <h4><span class="d-dot"></span>Continuous Education</h4>
+            <p>Our clinicians train with leading institutions globally — from the Kois Center in Seattle to the gIDE Institute in Los Angeles. We invest in mastery because your smile deserves nothing less than the current standard of care applied with seasoned judgement.</p>
+            <br>
+            <h4><span class="d-dot"></span>Evidence-Based Protocols</h4>
+            <p>Every technique we adopt is peer-reviewed, clinically documented, and tested in our own practice before becoming standard. From low-dose CBCT radiation protocols to minimally invasive margin design, the evidence guides our decisions — never convenience or trend.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== SERVICES ======== -->
+<section class="section services" id="services">
+  <div class="container">
+    <div class="section-header-exp fade-up">
+      <div class="section-header-exp-left">
+        <div class="hero-eyebrow">Signature Treatments</div>
+        <h2 class="section-headline">Crafted for Your Smile</h2>
+        <p class="section-sub">Every procedure is a bespoke composition of art, science, and meticulous attention to detail.</p>
+      </div>
+      <button class="expand-trigger" onclick="toggleDetails('services-details')" aria-expanded="false">
+        <span>View all</span>
+        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+      </button>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up stagger-delay-1">
+        <div class="service-card-image">
+          <img src="https://images.pexels.com/photos/6627292/pexels-photo-6627292.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Dentist matching shade for porcelain veneers" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Porcelain Veneers & Smile Design</h3>
+          <p>Ultra-thin, hand-crafted porcelain shells that transform the shape, colour, and alignment of your smile with breathtaking naturalism.</p>
+          <button class="service-card-link" onclick="toggleDetails('services-details')">
+            Discover more
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="service-card fade-up stagger-delay-2">
+        <div class="service-card-image">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Invisalign.jpg" alt="Invisalign clear aligner treatment" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M12 2v20"/><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+          <h3>Invisible Orthodontics</h3>
+          <p>Custom clear aligner systems that gently and discreetly straighten your teeth. No brackets, no wires, no compromises.</p>
+          <button class="service-card-link" onclick="toggleDetails('services-details')">
+            Discover more
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="service-card fade-up stagger-delay-3">
+        <div class="service-card-image">
+          <img src="https://images.pexels.com/photos/5622271/pexels-photo-5622271.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Professional teeth whitening procedure" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0-6 6c0 4 6 10 6 10s6-6 6-10a6 6 0 0 0-6-6z"/><circle cx="12" cy="9" r="2"/></svg>
+          </div>
+          <h3>Premium Teeth Whitening</h3>
+          <p>Professional-grade enamel-safe formulas activated by advanced LED technology, delivering up to 8 shades brighter in one visit.</p>
+          <button class="service-card-link" onclick="toggleDetails('services-details')">
+            Discover more
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-details" id="services-details">
+      <div class="section-details-inner">
+        <button class="details-close" onclick="toggleDetails('services-details')" aria-label="Close">&times;</button>
+        <h3 class="section-headline" style="font-size:clamp(1.3rem,2.5vw,1.7rem);">Complete Treatment Portfolio</h3>
+        <p class="section-sub" style="margin-top:0.5rem;font-size:0.92rem;">From single-visit transformations to comprehensive rehabilitations, every service is delivered with boutique attention and scientific rigour.</p>
+        <div class="details-grid">
+          <div>
+            <h4><span class="d-dot"></span>Porcelain Veneers (Lumineers & Premium)</h4>
+            <p> ultra-thin ceramic restorations bonded to the facial surface of teeth. Require minimal to no preparation. Each veneer is individually layered and glazed by a master ceramist to match the exact chroma, value, and translucency of neighbouring dentition.</p>
+            <br>
+            <h4><span class="d-dot"></span>Composite Bonding & Recontouring</h4>
+            <p>For minor corrections — diastema closure, chip repair, shape refinement — using high-density纳米-hybrid composites polished to a mirror finish that rivals porcelain in lustre.</p>
+            <br>
+            <h4><span class="d-dot"></span>Full Smile Rehabilitation</h4>
+            <p>Multi-arch cases combining crowns, veneers, onlays, and implant restorations. Planned digitally, delivered in phases, with provisional temporaries that allow you to preview your smile before finalisation.</p>
+          </div>
+          <div>
+            <h4><span class="d-dot"></span>Clear Aligners (Invisalign & Spark)</h4>
+            <p>We are among the top 5% of providers for both Invisalign and Spark systems. Treatment times from 4–18 months. Complex bite corrections including open bites, deep bites, and crossbites.</p>
+            <br>
+            <h4><span class="d-dot"></span>Professional Whitening</h4>
+            <p>Dual-arch custom tray system with potassium nitrate desensitising gel. In-office power bleaching under LED accelerates results. Maintenance kits available for at-home touch-ups every 6 months.</p>
+            <br>
+            <h4><span class="d-dot"></span>Preventive & Maintenance</h4>
+            <p>Six-month recalls with intraoral scanning, periodontal charting, oral cancer screening, and professional prophylaxis using air-polishing and ultrasonic instrumentation. Membership plans available for uninsured patients.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== THE EXPERIENCE ======== -->
+<section class="section experience" id="experience">
+  <div class="container">
+    <div class="experience-image fade-up">
+      <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80&auto=format&fit=crop" alt="Serene treatment room with ambient lighting" loading="lazy">
+      <div class="experience-accent">
+        <strong>98%</strong>
+        <span>Patient satisfaction rate</span>
+      </div>
+    </div>
+    <div class="experience-content fade-up stagger-delay-1">
+      <div class="hero-eyebrow">The Lumina Difference</div>
+      <h2 class="section-headline">Redefining the Dental Visit</h2>
+      <p class="section-sub" style="margin-top:0.8rem">Step into a space designed to feel more like a boutique spa than a clinic. From the moment you arrive, every detail is calibrated for your comfort.</p>
+      <ul class="experience-list">
+        <li>
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Private, soundproofed suites with ambient lighting and heated chairs
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Curated hospitality — champagne, herbal teas, and noise-cancelling headphones
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Same-day digital impressions — no messy moulds, no gagging
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Dedicated patient concierge for scheduling, reminders, and aftercare
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Flexible membership plans for uncompromised preventive care
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ======== TESTIMONIALS ======== -->
+<section class="section testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-header-exp fade-up">
+      <div class="section-header-exp-left">
+        <div class="hero-eyebrow">Patient Stories</div>
+        <h2 class="section-headline">Smiles That Speak for Themselves</h2>
+        <p class="section-sub">The kindest words come from those who entrusted us with their smile.</p>
+      </div>
+      <button class="expand-trigger" onclick="toggleDetails('testimonials-details')" aria-expanded="false">
+        <span>More stories</span>
+        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+      </button>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up stagger-delay-1">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">I used to dread the dentist. Lumina completely changed that. The veneers are so natural that even my closest friends thought I was just glowing. The care, the attention, the warmth — it is genuinely transformative.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80&auto=format&fit=crop&crop=face" alt="" loading="lazy">
+          </div>
+          <div>
+            <div class="testimonial-name">Sophia Chen</div>
+            <div class="testimonial-role">Veneers & Smile Design</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up stagger-delay-2">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">Six months of invisible aligners and my teeth are straighter than they ever were with braces as a teenager. No pain, no awkwardness, and the team checked in on me every single week. Absolute perfection.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80&auto=format&fit=crop&crop=face" alt="" loading="lazy">
+          </div>
+          <div>
+            <div class="testimonial-name">James Mitchell</div>
+            <div class="testimonial-role">Invisible Orthodontics</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up stagger-delay-3">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">I was nervous about whitening because of sensitivity. The clinician used a desensitising protocol beforehand and the results are stunning — eight shades lighter, zero discomfort. I cannot stop smiling.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80&auto=format&fit=crop&crop=face" alt="" loading="lazy">
+          </div>
+          <div>
+            <div class="testimonial-name">Olivia Park</div>
+            <div class="testimonial-role">Premium Whitening</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-details" id="testimonials-details">
+      <div class="section-details-inner">
+        <button class="details-close" onclick="toggleDetails('testimonials-details')" aria-label="Close">&times;</button>
+        <h3 class="section-headline" style="font-size:clamp(1.3rem,2.5vw,1.7rem);">More Patient Experiences</h3>
+        <p class="section-sub" style="margin-top:0.5rem;font-size:0.92rem;">Hear from more patients whose lives have been transformed through compassionate, high-craft dentistry.</p>
+        <div class="details-grid">
+          <div>
+            <h4><span class="d-dot"></span>Maria G. — Full Rehabilitation</h4>
+            <p>"After years of avoiding mirrors, I finally have a smile I am proud of. Dr. Méndez and his team rebuilt not just my teeth, but my confidence. The temporary provisionals looked better than my natural teeth ever did — I almost did not want the finals!"</p>
+            <br>
+            <h4><span class="d-dot"></span>Carlos R. — Sedation Dentistry</h4>
+            <p>"I have severe dental phobia. The conscious sedation protocol was a revelation. I remember nothing of the procedure and woke up with a complete restoration. If you are reading this and scared — this is the place."</p>
+          </div>
+          <div>
+            <h4><span class="d-dot"></span>Andrea L. — Clear Aligners</h4>
+            <p>"At 34, I thought it was too late for orthodontics. Spark aligners straightened my crowding in 11 months. The weekly check-ins via WhatsApp made me feel supported the entire journey. Worth every penny."</p>
+            <br>
+            <h4><span class="d-dot"></span>Ricardo S. — Preventive Care</h4>
+            <p>"I have been coming to Lumina for three years now. The membership plan makes premium preventive care affordable, and the six-month cleanings are genuinely relaxing. The air-polishing system is so gentle — no more scraping."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FINAL CTA ======== -->
+<section class="cta-section" id="contact">
+  <div class="container container--narrow fade-up">
+    <div class="cta-badge">
+      <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      Begin your journey
+    </div>
+    <h2 class="section-headline">Your New Smile Begins Today</h2>
+    <p class="section-sub">Schedule a private consultation with our lead aesthetic dentist. No obligation, just a conversation about what is possible.</p>
+    <a href="agenda.html" class="btn-primary">
+      <span>Schedule Your Consultation</span>
+      <span class="icon-circle">
+        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </span>
+    </a>
+  </div>
+</section>
+
+<!-- ======== FOOTER ======== -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-brand">
+      <div class="nav-logo">Lumina<span>.</span></div>
+      <p>Boutique dental studio redefining the standard of care through artistry, technology, and genuine compassion.</p>
+      <div class="footer-socials">
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://wa.me/584121234567" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#" onclick="event.preventDefault(); toggleDetails('philosophy-details')">Philosophy</a></li>
+        <li><a href="#" onclick="event.preventDefault(); toggleDetails('services-details')">Services</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#" onclick="event.preventDefault(); toggleDetails('testimonials-details')">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#" onclick="event.preventDefault(); toggleDetails('services-details')">Porcelain Veneers</a></li>
+        <li><a href="#" onclick="event.preventDefault(); toggleDetails('services-details')">Invisible Orthodontics</a></li>
+        <li><a href="#" onclick="event.preventDefault(); toggleDetails('services-details')">Premium Whitening</a></li>
+        <li><a href="#" onclick="event.preventDefault(); toggleDetails('services-details')">Smile Rehabilitation</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul class="footer-contact">
+        <li>
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>+58 412-123-4567</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>contacto@luminadental.com</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Av. Francisco de Miranda,<br>Centro Lido, Caracas 1060</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Lun–Vie 9:00–18:00 · Sáb 9:00–13:00</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-bottom">
+      <p>&copy; 2026 Lumina Dental Studio. Todos los derechos reservados.</p>
+      <p>Hecho con intención · Ejemplo demo para clínicas odontológicas</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  const nav = document.querySelector('.nav');
+  let ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      window.requestAnimationFrame(function(){
+        nav.classList.toggle('scrolled', window.scrollY > 20);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  const hamburger = document.getElementById('hamburger');
+  const overlay = document.getElementById('mobileOverlay');
+  const body = document.body;
+
+  function toggleMenu(open){
+    const isOpen = open !== undefined ? open : !overlay.classList.contains('open');
+    overlay.classList.toggle('open', isOpen);
+    hamburger.classList.toggle('active', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    body.style.overflow = isOpen ? 'hidden' : '';
+  }
+
+  window.closeMobile = function(){ toggleMenu(false); };
+  hamburger.addEventListener('click', function(){ toggleMenu(); });
+
+  window.toggleDetails = function(id){
+    const panel = document.getElementById(id);
+    if(!panel) return;
+    const isOpen = panel.classList.contains('open');
+
+    document.querySelectorAll('.section-details.open').forEach(function(d){
+      if(d.id !== id){
+        d.classList.remove('open');
+        d.previousElementSibling && d.previousElementSibling.querySelector('.expand-trigger') &&
+          d.previousElementSibling.querySelector('.expand-trigger').setAttribute('aria-expanded','false');
+      }
+    });
+
+    panel.classList.toggle('open');
+    const trigger = panel.closest('.section') && panel.closest('.section').querySelector('.expand-trigger');
+    if(trigger) trigger.setAttribute('aria-expanded', !isOpen);
+
+    if(!isOpen){
+      setTimeout(function(){
+        panel.scrollIntoView({behavior:'smooth', block:'nearest', inline:'nearest'});
+      }, 100);
+    }
+  };
+
+  const revealEls = document.querySelectorAll('.fade-up');
+  if('IntersectionObserver' in window){
+    const observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.06, rootMargin:'0px 0px -40px 0px'});
+    revealEls.forEach(function(el){ observer.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('visible'); });
+  }
+
+})();
+</script>
+</body>
+</html>
